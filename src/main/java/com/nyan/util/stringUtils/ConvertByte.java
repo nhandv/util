@@ -26,9 +26,9 @@ public class ConvertByte {
 			throw new IllegalArgumentException("sInHex is null");
 		} else {
 			byte[] data = new byte[sInHex.length() / 2];
-			int j = 0;
 			for (int i = 0; i < sInHex.length(); i += 2) {
-				data[j++] = Byte.parseByte(sInHex.substring(i, i + 2), 16);
+		        data[i / 2] = (byte) ((Character.digit(sInHex.charAt(i), 16) << 4)
+                        + Character.digit(sInHex.charAt(i+1), 16));
 			}
 			return data;
 		}

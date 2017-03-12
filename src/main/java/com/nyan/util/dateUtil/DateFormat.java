@@ -12,10 +12,6 @@ public class DateFormat {
 	private final static String DD_MM_YYYY ="dd/MM/yyyy";
 	private static SimpleDateFormat simpleFormat;
 	private static Calendar calender;
-
-	static{
-		calender = Calendar.getInstance();
-	}
 	
 	/**
 	 * 
@@ -111,6 +107,7 @@ public class DateFormat {
 	 */
 	public static Date getCurentDate() throws Exception{
 		Date rs= null;
+		calender = Calendar.getInstance();
 		if(calender != null){
 			rs = calender.getTime();
 		}
@@ -122,6 +119,7 @@ public class DateFormat {
 	 */
 	public static String getCurentDay(){
 		String rs = null;
+		calender = Calendar.getInstance();
 		if(calender != null){
 			int dayOfMonth = calender.get(Calendar.DAY_OF_MONTH);
 			rs = String.valueOf(dayOfMonth);
@@ -134,6 +132,7 @@ public class DateFormat {
 	 */
 	public static String getCurentMonth(){
 		String rs = null;
+		calender = Calendar.getInstance();
 		if(calender != null){
 			int month = calender.get(Calendar.MONTH);
 			rs = String.valueOf(month);
@@ -146,6 +145,7 @@ public class DateFormat {
 	 */
 	public static String getCurentYear(){
 		String rs = null;
+		calender = Calendar.getInstance();
 		if(calender != null){
 			int year = calender.get(Calendar.YEAR);
 			rs = String.valueOf(year);
@@ -186,7 +186,14 @@ public class DateFormat {
 						numberDay = toDay - fromDay;
 					}
 				}else{
-					
+					// lay ngay cuoi thang cua fromMonth
+					Date dtFrom = getLastDayOfMonth(fromMonth, fromYear);
+					cl.setTime(dtFrom);
+					int day = cl.get(Calendar.DAY_OF_MONTH);
+					numberDay = day - fromDay;
+					for(int i = fromMonth+1; i <= toMonth-1; i++){
+						
+					}
 						
 				}
 			}else{

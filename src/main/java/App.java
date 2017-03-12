@@ -3,6 +3,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Date;
 
 import com.nyan.util.FileContext;
+import com.nyan.util.cryptUtil.PassTranformer;
 import com.nyan.util.dateUtil.DateFormat;
 import com.nyan.util.stringUtils.ConvertByte;
 
@@ -15,7 +16,7 @@ public class App {
 //		} catch (IllegalArgumentException | IOException e) {
 //			e.printStackTrace();
 //		}
-//		String s = "nyan";
+		String s = "nyan";
 //		byte[] b = null;
 //		try {
 //			b = s.getBytes("UTF-8");
@@ -33,6 +34,10 @@ public class App {
 		System.out.println(dt1);
 		Date dt2 = DateFormat.getCurentDate();
 		System.out.println(dt2);
+		String strEncrypt = PassTranformer.encrypt(s);
+		System.out.println(strEncrypt);
+		String strDecrypt = PassTranformer.decrypt(strEncrypt);
+		System.out.println(strDecrypt);
 	}
 
 }
